@@ -12,12 +12,15 @@ export default function Tweet ({onAddTweet}) {
         e.preventDefault();
 
         if (content.trim() ==="" ) return; //trim() elimina espacios al principio y al final.
+        if(content.length > 280) return; 
         // Eso basicamente si el contenido esta vacio pues return que es salir de la funcion
         onAddTweet(content); // Esto es despues se va a recibir por otro fichero, el componenente padre
         //Entonces cuando se da al boton tweet lo que hacemos es enviarle a App.jsx el; contenido del input. Es un PROP
         setContent("");//Despues de todo se vuelve a vaciar el input
 
         };
+
+        
         
     return (
         <>
@@ -31,7 +34,8 @@ export default function Tweet ({onAddTweet}) {
                 placeholder="Share your thoughts" 
                 id="tweet" 
                 name="tweet" 
-                rows="8" /> 
+                rows="8" 
+                maxlength="280"/> 
                 <button type="submit" class="post"> Tweet </button>
 
             </form>
